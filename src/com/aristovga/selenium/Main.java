@@ -76,7 +76,7 @@ public class Main {
                                 String[] titles = {"Students", "Instructors", "Book Authors",
                                         "Professionals", "Researchers", "Institutions",
                                         "Librarians", "Corporations", "Societies", "Journal Editors",
-                                        "Bookstores",
+                                        //"Bookstores",
                                         "Government"};
                                 List<WebElement> listSubMenuWWS = item.findElements(By.className("dropdown-item"));
                                 if (listSubMenuWWS.size() == titles.length) {
@@ -358,7 +358,15 @@ public class Main {
                             if(product.findElement(By.className("product-title")).findElement(By.className("search-highlight")).getAttribute("innerHTML").trim().toLowerCase().contains("java")
                             && product.findElements(By.className("product-button")).size() >0)
                             {
-                                tmpCount++;
+                                List<WebElement> tmp = product.findElements(By.className("product-button"));
+                                int test =0;
+                                for(WebElement element: tmp)
+                                {
+                                    if(element.getAttribute("innerHTML").toLowerCase().contains("add to cart"))
+                                        test = 1;
+                                }
+
+                                tmpCount+=test;
                             }
                         }
 
